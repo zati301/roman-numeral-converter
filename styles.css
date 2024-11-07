@@ -1,0 +1,47 @@
+:root {
+    --dark-blue: #0B132B;
+    --mid-blue: #1C2541;
+    --light-blue: #3A506B;
+    --lighter-blue: #dbe4ee;
+  }
+  
+  *, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: "Monda", sans-serif;
+    background-color: var(--dark-blue);
+    color: var(--lighter-blue);
+  }
+  
+  h1, section {
+    text-align: center;
+    padding: 10px;
+  }
+  
+  input, button {
+    padding: 4px 10px;
+    font-family: "Monda", sans-serif;
+    background-color: var(--lighter-blue);
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    cursor: pointer;
+  }
+  
+  #output-container {
+    border: 1px solid white;
+    max-width: 500px;
+    margin: auto;
+    margin-top: 10px;
+    height: 100px;
+  }
+  
+  #output {
+    padding-top: 20px;
+  }
+  
