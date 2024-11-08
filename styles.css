@@ -17,6 +17,11 @@
     color: var(--lighter-blue);
   }
   
+  #roman-numeral-converter {
+    display: block;
+    margin-top: calc(100vh /4);
+  }
+
   h1, section {
     text-align: center;
     padding: 10px;

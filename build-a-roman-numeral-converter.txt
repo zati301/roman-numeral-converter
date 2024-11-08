@@ -1,0 +1,182 @@
+** start of undefined **
+
+<!DOCTYPE html>
+<html lang="en"> 
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Monda:wght@400..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <title>Roman Numeral Converter Project</title>
+  </head>
+  <body>
+    <main>
+      <div id="roman-numeral-converter">
+        <h1 id="title">Roman Numeral Converter</h1>
+        <section id="input-container">
+          <label for="number">Type in a number:</label>
+          <input id="number" name="number" type="number" />
+          <button id="convert-btn" type="button">Convert</button>
+        </section>
+        <section id="output-container">
+          <p id="output"></p>
+        </section>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+** end of undefined **
+
+** start of undefined **
+
+const numberInput = document.getElementById("number");
+const convertBtn = document.getElementById("convert-btn");
+const output = document.getElementById("output");
+
+let roman = "";
+
+const arabicToRoman = (input) => {
+  let curVal = input;
+  //console.log("Current value:", curVal);
+  //console.log("Current roman:", roman, "\n");
+
+  //check from highest to lowest value (M until I)
+  //then subtract value from input until input reaches 0
+
+  if (curVal === 0) {
+    //console.log(roman); 
+    return roman;
+  } else if (curVal >= 1000) {
+    roman += "M";
+    return arabicToRoman(curVal - 1000); 
+  } else if (curVal >= 900) {
+    roman += "CM";
+    return arabicToRoman(curVal - 900)  
+  } else if (curVal >= 500) {
+    roman += "D";
+    return arabicToRoman(curVal - 500); 
+  } else if (curVal >= 400) {
+    roman += "CD";
+    return arabicToRoman(curVal - 400); 
+  } else if (curVal >= 100) {
+    roman += "C";
+    return arabicToRoman(curVal - 100); 
+  } else if (curVal >= 90) {
+    roman += "XC";
+    return arabicToRoman(curVal - 90); 
+  } else if (curVal >= 50) {
+    roman += "L";
+    return arabicToRoman(curVal - 50); 
+  } else if (curVal >= 40) {
+    roman += "XL";
+    return arabicToRoman(curVal - 40); 
+  } else if (curVal >= 10) {
+    roman += "X";
+    return arabicToRoman(curVal - 10); 
+  } else if (curVal >= 9) {
+    roman += "IX";
+    return arabicToRoman(curVal - 9);
+  } else if (curVal >= 5) {
+    roman += "V";
+    return arabicToRoman(curVal - 5); 
+  } else if (curVal >= 4) {
+    roman += "IV";
+    return arabicToRoman(curVal - 4); 
+  } else if (curVal >= 1) {
+    roman += "I";
+    return arabicToRoman(curVal - 1); 
+  }
+}
+
+//test
+//console.log(arabicToRoman(1023));
+
+
+const isValidInput = () => {
+  let message = "";
+  //converts str from numberInput into number/integer
+  const numInt = parseInt(numberInput.value);
+
+  if (!numInt || isNaN(numInt)) {
+    message = "Please enter a valid number";
+  } else if (numInt < 0) {
+    message = "Please enter a number greater than or equal to 1"
+  } else if (numInt >= 4000) {
+    message = "Please enter a number less than or equal to 3999";
+  } else {
+    //convert
+    message = arabicToRoman(numInt);
+  }
+  return message;
+}
+
+const showOutput = () => {
+  output.textContent = isValidInput();
+  numberInput.value = "";
+  roman = "";
+}
+
+convertBtn.addEventListener("click", showOutput);
+
+numberInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    showOutput();
+  }
+});
+
+** end of undefined **
+
+** start of undefined **
+
+:root {
+  --dark-blue: #0B132B;
+  --mid-blue: #1C2541;
+  --light-blue: #3A506B;
+  --lighter-blue: #dbe4ee;
+}
+
+*, ::before, ::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Monda", sans-serif;
+  background-color: var(--dark-blue);
+  color: var(--lighter-blue);
+}
+
+h1, section {
+  text-align: center;
+  padding: 10px;
+}
+
+input, button {
+  padding: 4px 10px;
+  font-family: "Monda", sans-serif;
+  background-color: var(--lighter-blue);
+  border-radius: 5px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+#output-container {
+  border: 1px solid white;
+  max-width: 500px;
+  margin: auto;
+  margin-top: 10px;
+  height: 100px;
+}
+
+#output {
+  padding-top: 20px;
+}
+
+
+** end of undefined **
+
